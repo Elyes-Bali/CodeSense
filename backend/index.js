@@ -21,7 +21,15 @@ const __dirname = path.resolve();
 const openai = new OpenAI();
 
 // ⛑ Middleware
-app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173", // local dev
+      "https://codesense-7sfi.onrender.com" // deployed frontend
+    ],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 
