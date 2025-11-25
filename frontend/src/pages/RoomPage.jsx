@@ -7,7 +7,7 @@ import NavBar from "../components/NavBar";
 const API_BASE_URL =
   import.meta.env.MODE === "development"
     ? "http://localhost:5000/api/room"
-    : "/api/room";
+    : "https://codesense-7sfi.onrender.com/api/room";
 
 const RoomPage = () => {
   const { user } = useAuthStore();
