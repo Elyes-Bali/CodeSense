@@ -17,7 +17,10 @@ import NavBar from "../components/NavBar";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
-
+const API_BASE_URL =
+  import.meta.env.MODE === "development"
+    ? "http://localhost:5000/api/room"
+    : "/api/room";
 const UserRoomsList = () => {
   const { user } = useAuthStore();
   const navigate = useNavigate();
@@ -34,7 +37,7 @@ const UserRoomsList = () => {
       }
 
       try {
-        const response = await axios.get("http://localhost:5000/api/room", {
+        const response = await axios.get(`${API_BASE_URL}`, {
           withCredentials: true,
         });
         setRooms(response.data.rooms);
